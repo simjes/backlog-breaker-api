@@ -2,7 +2,7 @@ import Foundation
 
 public struct TokenResponse: Codable {
     var accessToken: String
-    var expiresIn: Int
+    var expiresIn: Double
     var tokenType: String
 
     enum CodingKeys: String, CodingKey {
@@ -10,4 +10,9 @@ public struct TokenResponse: Codable {
         case expiresIn = "expires_in"
         case tokenType = "token_type"
     }
+}
+
+public struct TokenCache: Codable {
+    var accessToken: String
+    var expires: Date
 }

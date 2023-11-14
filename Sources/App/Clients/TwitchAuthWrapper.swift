@@ -4,19 +4,28 @@ import Vapor
 
 let baseUrl = "https://id.twitch.tv/oauth2/token"
 
-public func getAccessToken(req: Request) async -> TokenResponse? {
+var tokenCache: TokenCache?
+
+public func getAccessToken(req: Request) async -> String {
     let clientId = Environment.get("TWITCH_CLIENT_ID") ?? ""
     let clientSecret = Environment.get("TWITCH_CLIENT_SECRET") ?? ""
 
-    // TODO: check if we have access token already
+    if tokenCache != nil {
+        // 1 minute grace period
+        let hasExpired = tokenCache!.expires < Date.now.addingTimeInterval(-60)
+        if !hasExpired { return tokenCache!.accessToken }
+    }
 
     do {
         let response = try await req.client.post("\(baseUrl)?client_id=\(clientId)&client_secret=\(clientSecret)&grant_type=client_credentials")
-        return try response.content.decode(TokenResponse.self)
+        let token = try response.content.decode(TokenResponse.self)
+        tokenCache = TokenCache(accessToken: token.accessToken, expires: Date.now.addingTimeInterval(token.expiresIn))
+
+        return token.accessToken
     } catch {
-        // Handle or log the error
+        // TODO: Handle or log the error — what do?
         print("Error occurred: \(error)")
-        return nil // or return a default TokenResponse
+        return ""
     }
 }
 
@@ -28,7 +37,7 @@ public func searchGamesAsync(req: Request, query: String) async throws -> [Proto
         .fields(fields: "*")
         .search(searchQuery: query)
 
-    let wrapper = IGDBWrapper(clientID: clientId, accessToken: token?.accessToken ?? "")
+    let wrapper = IGDBWrapper(clientID: clientId, accessToken: token)
 
     return try await withCheckedThrowingContinuation { continuation in
         wrapper.search(apiCalypse: apiCalypse) { results in
