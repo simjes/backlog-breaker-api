@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "backlog-breaker-api",
     platforms: [
-       .macOS(.v13)
+        .macOS(.v13),
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
@@ -13,6 +13,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent.git", from: "4.8.0"),
         // 🐬 Fluent driver for MySQL.
         .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
+        .package(url: "https://github.com/husnjak/IGDB-SWIFT-API.git", from: "0.4.3"),
     ],
     targets: [
         .executableTarget(
@@ -21,6 +22,7 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
                 .product(name: "Vapor", package: "vapor"),
+                "IGDB-SWIFT-API",
             ]
         ),
         .testTarget(name: "AppTests", dependencies: [
@@ -31,6 +33,6 @@ let package = Package(
             .product(name: "Vapor", package: "vapor"),
             .product(name: "Fluent", package: "Fluent"),
             .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
-        ])
+        ]),
     ]
 )
