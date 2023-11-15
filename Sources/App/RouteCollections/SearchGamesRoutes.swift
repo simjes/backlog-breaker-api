@@ -11,18 +11,10 @@ struct SearchGamesRoutes: RouteCollection {
         }
     }
 
-    func index(req: Request) async throws -> [Game] {
+    func index(req: Request) async throws -> [SearchResponse] {
         let query = req.parameters.get("query") ?? ""
-        let ble = try await searchGames(req: req, query: query)
+        let searchResults = try await searchGames(req: req, query: query)
 
-        // try catch
-        let games = try await Game.query(on: req.db).filter(\.$title ~~ query).all()
-
-        print(ble)
-        return games
-        // TODO:
-        // 1. Search IGDB for games
-        // 2. Save results to database if not there
-        // 3. Return results
+        return searchResults
     }
 }
