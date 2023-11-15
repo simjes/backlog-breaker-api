@@ -1,6 +1,6 @@
 import Foundation
 
-public struct TokenResponse: Codable {
+internal struct TwitchTokenResponse: Codable {
     var accessToken: String
     var expiresIn: Double
     var tokenType: String
@@ -10,9 +10,4 @@ public struct TokenResponse: Codable {
         case expiresIn = "expires_in"
         case tokenType = "token_type"
     }
-}
-
-public struct TokenCache: Codable {
-    var accessToken: String
-    var expires: Date
 }

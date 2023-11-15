@@ -16,13 +16,17 @@ let package = Package(
         .package(url: "https://github.com/husnjak/IGDB-SWIFT-API.git", from: "0.4.3"),
     ],
     targets: [
+        .target(name: "IGDB", dependencies: [
+            .product(name: "Vapor", package: "vapor"),
+            "IGDB-SWIFT-API",
+        ]),
         .executableTarget(
             name: "App",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
                 .product(name: "Vapor", package: "vapor"),
-                "IGDB-SWIFT-API",
+                .target(name: "IGDB"),
             ]
         ),
         .testTarget(name: "AppTests", dependencies: [

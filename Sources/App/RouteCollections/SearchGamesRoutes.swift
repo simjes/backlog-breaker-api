@@ -1,8 +1,8 @@
 import Fluent
-import IGDB_SWIFT_API
+import IGDB
 import Vapor
 
-struct SearchGames: RouteCollection {
+struct SearchGamesRoutes: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let search = routes.grouped("search")
 
@@ -13,11 +13,11 @@ struct SearchGames: RouteCollection {
 
     func index(req: Request) async throws -> [Game] {
         let query = req.parameters.get("query") ?? ""
-        let ble = try await searchGamesAsync(req: req, query: query)
+        let ble = try await searchGames(req: req, query: query)
 
         // try catch
         let games = try await Game.query(on: req.db).filter(\.$title ~~ query).all()
-        
+
         print(ble)
         return games
         // TODO:
