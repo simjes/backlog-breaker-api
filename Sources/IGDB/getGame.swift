@@ -5,7 +5,7 @@ public func getGame(req: Request, igdbId: UInt64) async throws -> Proto_Game? {
     let (clientId, token) = await getIGDBCredentials(req: req)
 
     let apiCalypse = APICalypse()
-        .fields(fields: "*, cover.url")
+        .fields(fields: "*, cover.image_id")
         .where(query: "where id = \(igdbId);")
 
     let wrapper = IGDBWrapper(clientID: clientId, accessToken: token)

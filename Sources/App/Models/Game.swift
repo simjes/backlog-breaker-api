@@ -13,15 +13,15 @@ final class Game: Model, Content {
     @Field(key: "igdbId")
     var igdbId: UInt64
 
-    @Field(key: "imageUrl")
-    var imageUrl: String
+    @Field(key: "imageId")
+    var imageId: String
 
     init() {}
 
-    init(id: UUID? = nil, name: String, igdbId: UInt64, imageUrl: String?) {
+    init(id: UUID? = nil, name: String, igdbId: UInt64, imageId: String?) {
         self.id = id
         self.name = name
         self.igdbId = igdbId
-        self.imageUrl = imageUrl ?? ""
+        self.imageId = imageId ?? ""
     }
 }
