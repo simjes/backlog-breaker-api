@@ -13,7 +13,11 @@ struct SearchGamesRoutes: RouteCollection {
 
     func index(req: Request) async throws -> [SearchResponse] {
         let query = req.parameters.get("query") ?? ""
-        let searchResults = try await searchGames(req: req, query: query)
+        let igdbResults = try await searchGames(req: req, query: query)
+
+        let searchResults = igdbResults.map { result in
+            SearchResponse(id: result.id, name: result.name)
+        }
 
         return searchResults
     }

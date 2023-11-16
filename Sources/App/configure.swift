@@ -1,6 +1,6 @@
-import NIOSSL
 import Fluent
 import FluentMySQLDriver
+import NIOSSL
 import Vapor
 
 // configures your application
@@ -17,6 +17,7 @@ public func configure(_ app: Application) async throws {
     ), as: .mysql)
 
     app.migrations.add(CreateGame())
+    app.migrations.add(UpdateGame_AddImageUrl())
 
     // register routes
     try routes(app)
