@@ -19,6 +19,8 @@ public func configure(_ app: Application) async throws {
     app.migrations.add(CreateGame())
     app.migrations.add(UpdateGame_AddImageUrl())
     app.migrations.add(UpdateGame_AddImageId())
+    app.migrations.add(UpdateGame_IndexIgdbId())
+    app.migrations.add(UpdateGame_UniqueIgdbId())
 
     // register routes
     try routes(app)
