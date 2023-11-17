@@ -64,12 +64,30 @@
       }
     },
     {
+      "identity" : "imperial",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/Imperial.git",
+      "state" : {
+        "revision" : "aaa23b9c4e0fe0b399c2b6cf17447e686daadf1d",
+        "version" : "1.2.0"
+      }
+    },
+    {
       "identity" : "just",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dduan/Just.git",
       "state" : {
         "revision" : "1824bf84cf52d11d69ae20cfb89f0ce5bffa5650",
         "version" : "0.8.0"
+      }
+    },
+    {
+      "identity" : "jwt-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor/jwt-kit.git",
+      "state" : {
+        "revision" : "cd0fe3af36764e876182137c3132a6d8459e1867",
+        "version" : "4.13.1"
       }
     },
     {
