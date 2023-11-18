@@ -64,15 +64,6 @@
       }
     },
     {
-      "identity" : "imperial",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor-community/Imperial.git",
-      "state" : {
-        "revision" : "aaa23b9c4e0fe0b399c2b6cf17447e686daadf1d",
-        "version" : "1.2.0"
-      }
-    },
-    {
       "identity" : "just",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dduan/Just.git",
