@@ -14,6 +14,7 @@ let package = Package(
         // 🐬 Fluent driver for MySQL.
         .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
         .package(url: "https://github.com/husnjak/IGDB-SWIFT-API.git", from: "0.4.3"),
+//        .package(path: "../Imperial"),
         .package(url: "https://github.com/vapor-community/Imperial.git", from: "1.2.0"),
     ],
     targets: [
@@ -27,7 +28,8 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "ImperialDiscord", package: "Imperial"),
+//                .product(name: "ImperialDiscord", package: "Imperial"),
+                .product(name: "ImperialAuth0", package: "Imperial"),
                 .target(name: "IGDB"),
             ]
         ),
