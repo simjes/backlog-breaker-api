@@ -1,5 +1,5 @@
 import Fluent
-import IGDB
+import IGDBClient
 import Vapor
 
 struct SearchGamesRoutes: RouteCollection {

@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "imperial",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/Imperial.git",
+      "state" : {
+        "revision" : "aaa23b9c4e0fe0b399c2b6cf17447e686daadf1d",
+        "version" : "1.2.0"
+      }
+    },
+    {
       "identity" : "just",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dduan/Just.git",
@@ -194,8 +203,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "853522d90871b4b63262843196685795b5008c46",
-        "version" : "2.61.1"
+        "revision" : "702cd7c56d5d44eeba73fdf83918339b26dc855c",
+        "version" : "2.62.0"
       }
     },
     {
