@@ -16,7 +16,7 @@ struct SearchGamesRoutes: RouteCollection {
         let igdbResults = try await searchGames(req: req, query: query)
 
         let searchResults = igdbResults.map { result in
-            SearchResponse(id: result.id, name: result.name)
+            SearchResponse(id: result.game.id, name: result.name)
         }
 
         return searchResults
